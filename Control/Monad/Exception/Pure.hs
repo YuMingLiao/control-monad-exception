@@ -76,12 +76,7 @@ module Control.Monad.Exception.Pure (
 -- * Reexports
     Exception(..), SomeException(..),
 #if !MIN_VERSION_base(4,7,0)
-    Typeable1,
-#endif
-    Failure(..),
-#if !MIN_VERSION_failure(0,2,0)
-    Try(..), NothingException(..),
-    WrapFailure(..),
+    Typeable1
 #endif
 ) where
 
@@ -89,7 +84,7 @@ import Control.Monad.Exception.Base
 import Control.Monad.Exception.Throws
 import Control.Monad.Exception.Catch (MonadCatch, Exception, SomeException, fromException)
 import qualified Control.Monad.Exception.Catch
-import Control.Failure
+-- import Control.Failure
 import Data.Typeable
 
 {- $hierarchies

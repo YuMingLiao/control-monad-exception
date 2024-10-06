@@ -73,18 +73,13 @@ module Control.Monad.Exception.IO (
 
 -- * Reexports
     Exception(..), SomeException(..), Typeable,
-    Failure(..),
-#if !MIN_VERSION_failure(0,2,0)
-    Try(..), NothingException(..),
-    WrapFailure(..),
-#endif
 ) where
 
 import Control.Monad.Exception.Base
 import Control.Monad.Exception.Throws
 import Control.Monad.Exception.Catch (Exception, SomeException, fromException, MonadCatch)
 import qualified Control.Monad.Exception.Catch
-import Control.Failure
+-- import Control.Failure
 import Control.Monad.Trans.Control
 import Data.Typeable
 import Control.Exception.Lifted as CE (try)

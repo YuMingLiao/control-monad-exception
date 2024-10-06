@@ -19,7 +19,7 @@ import Control.Monad.Loc
 import Control.Monad.Trans.Class
 import Control.Monad.Trans.Control
 import Control.Monad.IO.Class
-import Control.Failure
+-- import Control.Failure
 import Control.Monad.Fix
 import Data.Typeable
 import Data.Functor.Identity
@@ -92,21 +92,6 @@ instance Monad m => Fail.MonadFail (EMT l m) where
 #endif
   fail s = EMT $ return $ Left ([], CheckedException $ toException $ FailException s)
 #endif
-
-instance (Exception e, Throws e l, Monad m) => Failure e (EMT l m) where
-  failure = throw
-
-#if !MIN_VERSION_failure(0,2,0)
-instance (Exception e, Throws e l, Failure e m, Monad m) => WrapFailure e (EMT l m) where
-  wrapFailure mkE m
-      = EMT $ do
-          v <- unEMT m
-          case v of
-            Right _ -> return v
-            Left (loc, CheckedException (SomeException e))
-                    -> return $ Left (loc, CheckedException $ toException $ mkE e)
-#endif
-
 instance MonadTrans (EMT l) where
   lift = EMT . liftM Right
 

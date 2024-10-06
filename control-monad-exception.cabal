@@ -78,8 +78,7 @@ Flag extensibleExceptions
 Library
   default-language: Haskell98
   buildable: True 
-  build-depends: failure >= 0.1 && < 0.3
-               , transformers >= 0.2
+  build-depends: transformers >= 0.2
                , transformers-base >= 0.4.1
                , monadloc >= 0.7
                , monad-control >= 0.3
